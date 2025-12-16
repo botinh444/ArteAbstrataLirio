@@ -1,0 +1,54 @@
+import javax.swing.JPanel;
+import java.awt.Graphics;
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+
+public class PanelDesenho extends JPanel {
+    private List<Forma> formas;
+
+    public PanelDesenho() {
+        formas = new ArrayList<>();
+        criarLirio();
+    }
+
+    private void criarLirio() {
+        // flor
+        Color rosaBebe = new Color(255, 182, 193); // rosa
+        Color branco = Color.WHITE;
+        Color verdePastel = new Color(152, 251, 152); // verde
+
+        // caule
+        formas.add(new Retangulo(390, 300, 20, 200, verdePastel));
+
+        formas.add(new Triangulo(400, 200, 80, 60, rosaBebe)); // pétala superior
+        formas.add(new Triangulo(350, 230, 60, 50, rosaBebe)); // pétala esquerda
+        formas.add(new Triangulo(450, 230, 60, 50, rosaBebe)); // pétala direita
+        formas.add(new Triangulo(400, 250, 70, 40, rosaBebe)); // pétala inferior
+
+
+        formas.add(new Triangulo(400, 220, 40, 30, branco)); // pétala interna superior
+        formas.add(new Triangulo(380, 235, 35, 25, branco)); // pétala interna esquerda
+        formas.add(new Triangulo(420, 235, 35, 25, branco)); // pétala interna direita
+
+
+        formas.add(new Circulo(400, 230, 12, Color.YELLOW));
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+
+        setBackground(new Color(255, 240, 245));
+
+
+        for (Forma forma : formas) {
+            forma.desenhar(g);
+        }
+    }
+
+    public void adicionarForma(Forma forma) {
+        formas.add(forma);
+    }
+}
