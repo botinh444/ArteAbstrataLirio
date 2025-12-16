@@ -1,0 +1,8 @@
+import java.awt.Color;
+
+public class Quadrado extends Retangulo {
+
+    public Quadrado(int x, int y, int lado, Color cor) {
+        super(x, y, lado, lado, cor);
+    }
+}
